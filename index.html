@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mining Exam">
-<link rel="apple-touch-icon" href="icon-512.png">
+<link rel="apple-touch-icon" href="url('https://img1.wsimg.com/isteam/ip/0bf70def-deca-417e-962f-b76f39b1865e/mine-haul-truck-banner.jpg');">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>GATE-style Mining Exam — 65 Qs</title>
@@ -51,6 +51,18 @@
   display: inline-block;
   border-radius: 3px;
 }
+
+/* count styles (minimal, color-coded) */
+.legend .count {
+  font-weight: 700;
+  margin-left: 6px;
+  color: var(--muted);
+}
+.legend .count.answered { color: var(--answered); }
+.legend .count.review { color: var(--review); }
+.legend .count.not-visited { color: var(--not-visited); }
+.legend .count.not-answered { color: var(--not-answered); }
+
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{  height:100%;  font-family: "Times New Roman", Times, serif;  background:#000;  color:#fff;}
 
@@ -69,6 +81,7 @@ html,body{  height:100%;  font-family: "Times New Roman", Times, serif;  backgro
 .btn.ghost{padding:10px 16px;border-radius:8px;border:none;background:white;color:#000;font-weight:700;cursor:pointer;font-size:16px}
 .btn.gho{padding:10px 16px;border-radius:8px;border:none;background:#3498db;color:#000;font-weight:700;cursor:pointer;font-size:16px}
 .btn.ghos{padding:10px 16px;border-radius:8px;border:none;background:#D3B683;color:#000;font-weight:700;cursor:pointer;font-size:16px}
+.btn.ghostt{padding:10px 16px;border-radius:8px;border:none;background:#2ecc71;color:#000;font-weight:700;cursor:pointer;font-size:16px}
 .layout{display:flex;gap:16px;margin-top:12px}
 .left{flex:1 1 68%}
 .right{flex-basis:32%;min-width:260px}
@@ -78,7 +91,7 @@ html,body{  height:100%;  font-family: "Times New Roman", Times, serif;  backgro
 .options{display:flex;flex-direction:column;gap:8px}
 .opt{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);cursor:pointer;text-align:left}
 .opt.selected{outline:2px solid rgba(255,204,0,0.6)}
-.timer{font-weight:700;color:var(--accent);font-size:16px;text-align:right}
+.timer{font-weight:700;color:var(--accent);font-size:24px;text-align:right}
 .palette{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .pmini {width: 36px;  height: 36px;  border-radius: 8px;  background: var(--not-visited);  display: flex;  align-items: center;  justify-content: center;  cursor: pointer;  border: 1px solid rgba(255,255,255,0.04);  color: #fff;  font-weight: 600;}
 .pmini.answered {  background: var(--answered);}
@@ -103,7 +116,7 @@ html,body{  height:100%;  font-family: "Times New Roman", Times, serif;  backgro
   background:#0b0b0b; padding:28px; border-radius:12px; text-align:center; max-width:420px; width:90%;
   box-shadow:0 10px 40px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.04);
 }
-.modal h2{color:var(--accent); margin-bottom:8px}
+.modal h2{Color:var(--accent); margin-bottom:8px}
 .modal p{color:#fff; font-size:1.1rem}
 .modal button{margin-top:16px}
 @media (max-width:1000px){.layout{flex-direction:column}.right{order:-1}}
@@ -156,7 +169,7 @@ html,body{  height:100%;  font-family: "Times New Roman", Times, serif;  backgro
           <li><strong>No partial marking</strong> is applicable for MSQ questions.</li>
         </ul>
       </div>
-      <button id="startBtn" class="btn">Start</button>
+      <button id="startBtn" class="btn ghostt">Start</button>
     </div>
 
     <!-- QUIZ UI -->
@@ -192,17 +205,17 @@ html,body{  height:100%;  font-family: "Times New Roman", Times, serif;  backgro
         <div class="palette" id="palette" aria-live="polite" style="margin-top:8px"></div>
       </div>
 
-      <!-- Color Legend -->
-      <div class="legend">
-        <div><span style="background: var(--answered);"></span> Answered</div>
-        <div><span style="background: var(--review);"></span> Marked for Review</div>
-        <div><span style="background: var(--not-visited);"></span> Not Visited</div>
-        <div><span style="background: var(--not-answered);"></span> Not Answered</div>
+      <!-- Color Legend (enhanced with counts) -->
+      <div class="legend" aria-hidden="false" style="margin-top:12px">
+        <div><span style="background: var(--answered);"></span> Answered <span id="count-answered" class="count answered">(0)</span></div>
+        <div><span style="background: var(--review);"></span> Marked for Review <span id="count-review" class="count review">(0)</span></div>
+        <div><span style="background: var(--not-visited);"></span> Not Visited <span id="count-not-visited" class="count not-visited">(65)</span></div>
+        <div><span style="background: var(--not-answered);"></span> Not Answered <span id="count-not-answered" class="count not-answered">(0)</span></div>
       </div>
 
       <div class="submit-area">
         <div class="result-wrap" id="liveInfo"></div>
-        <button id="submitBtn" class="btn" style="margin-top:10px">Submit</button>
+        <button id="submitBtn" class="btn ghostt" style="margin-top:10px">Submit</button>
       </div>
 
       <div style="margin-top:12px" class="footer">Indian Coal Chronicles</div>
@@ -247,14 +260,14 @@ const QUESTIONS = [
   {qno:9, section:'GA', type:'mcq', marks:marksForQ(9), question:"A business person buys potatoes of two varieties P and Q, mixes and sells at ₹192/kg. Cost of P = ₹800/5kg; Q = ₹800/4kg. If 8% profit, find P:Q ratio (by weight).", options:["5:4","3:4","3:2","1:1"], answer:0, explanation:"Unit costs: P=160/kg, Q=200/kg. Mixture cost for selling ₹192 with 8% profit → cost price ₹177.78 → ratio gives 5:4."},
   {qno:10, section:'GA', type:'mcq', marks:marksForQ(10), question:"Three villages P,Q,R with PQ=13, QR=14, RP=15. A road connects Q and R straight. Minimal length to connect P to QR is:", options:["10.5","11.0","12.0","12.5"], answer:0, explanation:"Perpendicular from P to QR yields minimal length ≈10.5 km (geometric solution)."},
   {qno:11, section:'MN', subtype:'Mine Planning', type:'nat', marks:marksForQ(11), question:"The time between consecutive accidents in days in an underground coal mine in a year are as follows 10, 15, 6, 18, 12, 14, 16, 9, 21, 15, 26, 18, 22, 25, 13. Assuming exponential distribution, the probability that there will be no accident over a 10-day period is_______", answerNum: 0.536, explanation:" We know that, Mean of accident =   &#956 =  &#946 = (10 + 15 + 6 + 18 + 12 + 14 + 16 + 9 + 21 + 15 + 26 + 18 + 22 + 25 + 13)/(15)  = (240)/(15) = 16 $$Mean =  &#956 = 1/ &#955 => &#955 =1/&#956  = 1/16$$ $$f(x) = &#955 e^{-x&#955} = {1}/{16} e^{-x/16}$$      $$f(a) = P(x ≤ a) = 1 - e^{-&#955a}$$  Therefore, the probability that an accident occurs within 10 days is:    $$P(x ≤ a) = 1 - e^{-10/16} = 1 - e^{-0.625} = 0.464$$  Hence, the probability that no accident occurs in 10 days is: 1 - P (accident) = 1-0.464 = 0.536"},
-  {qno:12,section: 'MN', subtype:'Mine Planning',  type: 'nat',  marks:marksForQ(12),  question: "In an open pit mine, the mineral inventory, prices, costs and capacities are given.<br><br> <h3>Mineral Inventory</h3> <table border=\"1\" cellspacing=\"0\" cellpadding=\"6\" style=\"border-collapse:collapse; width:480px; text-align:center; background:rgba(255,255,255,0.03); color:#fff; border:1px solid rgba(255,255,255,0.1);\"> <thead style=\"background:rgba(255,255,255,0.08);\"> <tr><th>Grade Interval</th><th>Tonnage (in million tonne)</th></tr></thead> <tbody> <tr><td>0 &lt; Cu% ≤ 0.3</td><td>0</td></tr> <tr><td>0.3 &lt; Cu% ≤ 0.4</td><td>5</td></tr> <tr><td>0.4 &lt; Cu% ≤ 0.5</td><td>5</td></tr> <tr><td>0.5 &lt; Cu% ≤ 0.6</td><td>5</td></tr> <tr><td>0.6 &lt; Cu% ≤ 0.7</td><td>5</td></tr> <tr><td>0.7 &lt; Cu% ≤ 0.8</td><td>5</td></tr> <tr><td>0.8 ≤ Cu%</td><td>0</td></tr> </tbody> </table><br> Concentration Cost : 3200/tn of ore milled, <br> Smelting and Refinery Cost : 10000/tn of Copper metal, <br> Selling Price : 6,50,000/tonne Copper metal, <br> Overall Recovery : 100%, <br> Maximum Production Capacity : 5 million tonne/annum <br><br> The mine is operating at 5 million tonne per year. Considering mining capacity being the only constraint, Lane's algorithm (based on profit maximization) is used for determining mill cut-off grade. <br><br>The total amount of Copper produced in million tonne, in the life of the pit, is ________.",  answerNum: 97500,  explanation: "We know that Lane's algorithm gives: <br><br> $$g = \\frac{c}{y(s - r)}$$ <br> where: <br> \\( g \\) = mill cut-off grade <br> \\( c \\) = concentrating cost <br> \\( y \\) = recovery <br> \\( s \\) = selling price <br> \\( r \\) = refinery cost <br><br> $$g = \\frac{3200}{1(650000 - 10000)} = 0.005 = 0.5\\%$$ <br><br> Total tonnage of ore to be sent for milling as per cut-off grade of 0.5% = 15 million tonnes. <br><br> Average grade of Cu: <br> $$\\text{Average Grade} = \\frac{0.5 + 0.8}{2} = 0.65\\%$$ <br><br> Amount of Copper recovered (tonnes): <br> $$15 \\times 10^6 \\times \\frac{0.65}{100} \\times 1 = 97500 \\text{ tonnes}$$"},
+  {qno:12, section: 'MN', subtype:'Mine Planning',  type: 'nat',  marks:marksForQ(12),  question: "In an open pit mine, the mineral inventory, prices, costs and capacities are given.<br><br> <h3>Mineral Inventory</h3> <table border=\"1\" cellspacing=\"0\" cellpadding=\"6\" style=\"border-collapse:collapse; width:480px; text-align:center; background:rgba(255,255,255,0.03); color:#fff; border:1px solid rgba(255,255,255,0.1);\"> <thead style=\"background:rgba(255,255,255,0.08);\"> <tr><th>Grade Interval</th><th>Tonnage (in million tonne)</th></tr></thead> <tbody> <tr><td>0 &lt; Cu% ≤ 0.3</td><td>0</td></tr> <tr><td>0.3 &lt; Cu% ≤ 0.4</td><td>5</td></tr> <tr><td>0.4 &lt; Cu% ≤ 0.5</td><td>5</td></tr> <tr><td>0.5 &lt; Cu% ≤ 0.6</td><td>5</td></tr> <tr><td>0.6 &lt; Cu% ≤ 0.7</td><td>5</td></tr> <tr><td>0.7 &lt; Cu% ≤ 0.8</td><td>5</td></tr> <tr><td>0.8 ≤ Cu%</td><td>0</td></tr> </tbody> </table><br> Concentration Cost : 3200/tn of ore milled, <br> Smelting and Refinery Cost : 10000/tn of Copper metal, <br> Selling Price : 6,50,000/tonne Copper metal, <br> Overall Recovery : 100%, <br> Maximum Production Capacity : 5 million tonne/annum <br><br> The mine is operating at 5 million tonne per year. Considering mining capacity being the only constraint, Lane's algorithm (based on profit maximization) is used for determining mill cut-off grade. <br><br>The total amount of Copper produced in million tonne, in the life of the pit, is ________.",  answerNum: 97500,  explanation: "We know that Lane's algorithm gives: <br><br> $$g = \\frac{c}{y(s - r)}$$ <br> where: <br> \\( g \\) = mill cut-off grade <br> \\( c \\) = concentrating cost <br> \\( y \\) = recovery <br> \\( s \\) = selling price <br> \\( r \\) = refinery cost <br><br> $$g = \\frac{3200}{1(650000 - 10000)} = 0.005 = 0.5\\%$$ <br><br> Total tonnage of ore to be sent for milling as per cut-off grade of 0.5% = 15 million tonnes. <br><br> Average grade of Cu: <br> $$\\text{Average Grade} = \\frac{0.5 + 0.8}{2} = 0.65\\%$$ <br><br> Amount of Copper recovered (tonnes): <br> $$15 \\times 10^6 \\times \\frac{0.65}{100} \\times 1 = 97500 \\text{ tonnes}$$"},
   {qno:13, section:'MN', subtype:'Mine Planning', type:'mcq', marks:marksForQ(13), question:"Given two random variables X and Y, the expected value E(3X-5Y) is _____?", options:["3E(X) - 5E(Y)","3 E(X) + 5E(Y)","3 E(X) - 5E(Y) - 15E(XY)","E(X) - E(Y) - E(XY)"], answer:0, explanation:" "},
-  {qno:14,section: 'MN', subtype: 'Mine Planning', type: 'nat', marks: marksForQ(14),  question: `Longitudinal section of a mined out stop block in a copper mine is shown by the shaded portion for a uniform thickness of the stop block,<br><br><img src="https://img1.wsimg.com/isteam/ip/0bf70def-deca-417e-962f-b76f39b1865e/Mining%20question%2015.jpg" alt="Longitudinal section of mined out stop block" style="max-width:290px; height:auto; border:1px solid rgba(255,255,255,0.2); border-radius:8px; display:block; margin:10px auto;"> <br> the percentage of ore recovery is ______.`,answerNum: 69.43,explanation: `Explanation: Shaded region volume —— $$19 \\,\\text{x}\\,1 \\,\\text{x}\\, 60 = 1140 m^3$$ <br>Volume of ore from stope = 1140 - 2 x (vol. of one side of rib)<br> Vol. of one side of rib = $$(8.25 \\,\\text{x}\\, 6.0) - (41.5 \\,\\text{x}\\, 6.25) – (π \\,\\text{x}\\, (6.25)^2 \\,\\text{x}\\, ½) = 174.26 m^3$$ <br>Ore recovery % = (1140 – 2 x (1740.26))/1140  x 100 = 69.43%`},
+  {qno:14, section: 'MN', subtype: 'Mine Planning', type: 'nat', marks: marksForQ(14),  question: `Longitudinal section of a mined out stop block in a copper mine is shown by the shaded portion for a uniform thickness of the stop block,<br><br><img src="https://img1.wsimg.com/isteam/ip/0bf70def-deca-417e-962f-b76f39b1865e/Mining%20question%2015.jpg" alt="Longitudinal section of mined out stop block" style="max-width:290px; height:auto; border:1px solid rgba(255,255,255,0.2); border-radius:8px; display:block; margin:10px auto;"> <br> the percentage of ore recovery is ______.`,answerNum: 69.43,explanation: `Explanation: Shaded region volume —— $$19 \\,\\text{x}\\,1 \\,\\text{x}\\, 60 = 1140 m^3$$ <br>Volume of ore from stope = 1140 - 2 x (vol. of one side of rib)<br> Vol. of one side of rib = $$(8.25 \\,\\text{x}\\, 6.0) - (41.5 \\,\\text{x}\\, 6.25) – (π \\,\\text{x}\\, (6.25)^2 \\,\\text{x}\\, ½) = 174.26 m^3$$ <br>Ore recovery % = (1140 – 2 x (1740.26))/1140  x 100 = 69.43%`},
   {qno:15, section:'MN', subtype:'Mine Planning', type:'nat', marks:marksForQ(15), question:"The average ore grade of a copper deposit is 0.9%. The recovery of the metal after processing, smelting and refining is 85%. If the selling price of refined cop per is Rs 640/kg, the sale value in Rs. from mining one tonne of ore is _________. ", answerNum: 4896, explanation:"Given that,<br>The average ore grade of a copper deposit = 0.9%.<br>The recovery of the metal after processing, smelting and refining = 85%. <br>Selling price of refined copper Rs 640/kg,<br>Now, for 1 tone of ore Amount of Cu recorded <br>= 1000 x (0.9/100  )x (85/100) <br>= 7.65 kg/tn of ore Sale value Rs. <br>= 7.65 x 640 = 4896 Rs / tn of ore"},
   {qno:16, section:'MN', subtype:'Mine Planning', type:'mcq', marks:marksForQ(16), question:"A deposit has the grade attribute X € [0, 30] with a density function f(x). For a cut-off grade x, the proportion of the ore in the deposit is given by _________? ", options:["$$½ \\int_{0}^{30} f(x)\\,dx + \\int_{0}^{x_c} f(x)\\,dx$$","$$½ \\int_{0}^{30} f(x)\\,dx - \\int_{0}^{x_c} f(x)\\,dx$$","$$ \\int_{0}^{30} f(x)\\,dx - \\int_{0}^{x_c} f(x)\\,dx$$","$$\\int_{0}^{x_c} f(x)\\,dx$$"], answer:2, explanation:" Grade attribute of deposit from 0 to 30 with density function f(x) <br>Hence total grade = $$\\int_{0}^{x_c} f(x)\\,dx$$ <br>Grade attribute of the ore ranges from $$x_c\\,\\text{ to }\\,30$$ <br>Hence the proportion of the grade in the ore = $$ \\int_{0}^{30} f(x)\\,dx - \\int_{0}^{x_c} f(x)\\,dx$$"},
   {qno:17, section:'MN', subtype:'Mine Economics', type:'nat', marks:marksForQ(17), question:"The real rate of return from a mining project is 14%. If the inflation rate over the entire life of the mine is 5.5%, then the nominal rate of return in % is ____. (round off up to 2 decimals) ", answerNum: 20.27, explanation:" Real rate of return RR = 14%, Inflation rate IR = 5.5%, Nominal rate  = NR<br> RR= (1+ NR/1+IR)−1<br>0.14=(NR-0.055)\/1.055<br> NR=0.14×1.055+0.055=0.2027=20.27%"},
   {qno:18, section:'MN', subtype:'Mine Economics', type:'mcq', marks:marksForQ(18), question:"The function of District Mineral Foundation established by state governments in India, is to?", options:[" Act as an environmental regulatory body "," Approve mining plan "," Monitor welfare of mining affected people "," Look after safety aspects of mining operations "], answer:2, explanation:" DGMS - Look after safety aspects of mining operations <br> IBM/CMPDI - Approve mining plan <br> MoEFCC, NGT - Act as an environmental regulatory body"},
-  {qno:19,  section: "MN",  subtype: "Mine Economics",  type: "mcq",  marks: marksForQ(19),  question: `The percentage Fe and corresponding net value for an iron ore mine is given below.   Assuming net value versus grade curve to be a straight line, and mining cost of waste is INR 1000/m³:  <br><br>  <table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse; width:480px; text-align:center; background:rgba(255,255,255,0.03); color:#fff; border:1px solid rgba(255,255,255,0.1);">    <thead style="background:rgba(255,255,255,0.08);">      <tr>        <th>Fe (%)</th>        <th>Net value (INR per tonne)</th>      </tr>    </thead>    <tbody>      <tr><td>58</td><td>4000</td></tr>      <tr><td>62</td><td>4500</td></tr>    </tbody>  </table>  <br>  The correct representation of stripping ratio, SR (m³/tonne) versus Fe (%) grade is?`,  options: [    "SR = 3250 + 125 × Fe",    "SR = -3250 + 125 × Fe",    "SR = -3.250 + 0.125 × Fe",    "SR = 3.250 + 125 × Fe"  ],  answer: 2,  explanation: `  <br><br>  <img src="https://img1.wsimg.com/isteam/ip/0bf70def-deca-417e-962f-b76f39b1865e/Mining%20question%2019.jpg"       alt="Longitudinal section of mined-out stope block"       style="max-width:290px; height:auto; border:1px solid rgba(255,255,255,0.2); border-radius:8px; display:block; margin:10px auto;">  Using the straight-line relation:  <br>  (y - y₁) / (x - x₁) = (y₂ - y₁) / (x₂ - x₁)  <br>  (y - 4000) / (x - 58) = 500 / 4  <br>  ⇒ Net Value (NV) = 125Fe - 3250  <br>  Stripping Ratio (S.R.) = (Net Value of ore) / (Cost of waste)  <br>  = (125Fe - 3250) / 1000 = 0.125Fe - 3.250  `},
+  {qno:19, section: "MN",  subtype: "Mine Economics",  type: "mcq",  marks: marksForQ(19),  question: `The percentage Fe and corresponding net value for an iron ore mine is given below.   Assuming net value versus grade curve to be a straight line, and mining cost of waste is INR 1000/m³:  <br><br>  <table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse; width:480px; text-align:center; background:rgba(255,255,255,0.03); color:#fff; border:1px solid rgba(255,255,255,0.1);">    <thead style="background:rgba(255,255,255,0.08);">      <tr>        <th>Fe (%)</th>        <th>Net value (INR per tonne)</th>      </tr>    </thead>    <tbody>      <tr><td>58</td><td>4000</td></tr>      <tr><td>62</td><td>4500</td></tr>    </tbody>  </table>  <br>  The correct representation of stripping ratio, SR (m³/tonne) versus Fe (%) grade is?`,  options: [    "SR = 3250 + 125 × Fe",    "SR = -3250 + 125 × Fe",    "SR = -3.250 + 0.125 × Fe",    "SR = 3.250 + 125 × Fe"  ],  answer: 2,  explanation: `  <br><br>  <img src="https://img1.wsimg.com/isteam/ip/0bf70def-deca-417e-962f-b76f39b1865e/Mining%20question%2019.jpg"       alt="Longitudinal section of mined-out stope block"       style="max-width:290px; height:auto; border:1px solid rgba(255,255,255,0.2); border-radius:8px; display:block; margin:10px auto;">  Using the straight-line relation:  <br>  (y - y₁) / (x - x₁) = (y₂ - y₁) / (x₂ - x₁)  <br>  (y - 4000) / (x - 58) = 500 / 4  <br>  ⇒ Net Value (NV) = 125Fe - 3250  <br>  Stripping Ratio (S.R.) = (Net Value of ore) / (Cost of waste)  <br>  = (125Fe - 3250) / 1000 = 0.125Fe - 3.250  `},
   {qno:20, section:'MEM', subtype:'Surveying', type:'mcq', marks:marksForQ(20), question:"Match source of error with correction in steel tape: (P) Sag (1)+; (Q) Temperature (2)−; (R) Pull>std (3)+/−. Choose correct mapping.", options:["P→1, Q→2, R→3","P→1, Q→3, R→2","P→2, Q→3, R→1","P→2, Q→1, R→3"], answer:2, explanation:"Sag causes negative, temperature can be +/−, excessive pull shortens tape."},
   {qno:21, section:'MN', subtype:'Mine Economics', type:'mcq', marks:marksForQ(21), question:"A mining company produces iron ore and sells to another company. Royalty to be paid is on the basis of?", options:["Quantity of ore produced ","Quantity of ore sold"," Difference between the quantities of ore produced and sold "," Net Profit"], answer:1, explanation:" "},
   {qno:22, section:'MN', subtype:'Mine Economics', type:'nat', marks:marksForQ(22), question:"The cost of a screew compressor with an estimated life of 15 years is Rs. 21,00,000. If the depreciation of the compressor charged, using the ‘sum-of-the-years-digits’ method, at the end of 4th year is Rs. 2,00,000, the salvage value, in Rs., ____is (round off to one decimal place) ", answerNum: 100000, explanation:" We know that, <br> Depreciation expense = (Cost - Salvage value) X ((n-a)+1)/ (n(n+1)/2) <br> 2,00,000 = (21,00,000 - Salvage value) X ((15 - 4 +1))/ (15(15 +1)/2)<br> Salvage value = 21,00,000 - 20,00,000 = 1,00,000"},
@@ -271,7 +284,7 @@ const QUESTIONS = [
   {qno:33, section:'MEM', subtype:'Production', type:'nat', marks:marksForQ(33), question:"Bord & pillar data given — OMS (output per manshift) in tonne (rounded to 2 decimals).", answerNum: 12.34, explanation:"Compute tonnes per shift using blasts, face size, density and manpower."},
   {qno:34, section:'MEM', subtype:'Rock Properties', type:'nat', marks:marksForQ(34), question:"In-situ density 1320 kg/m3, blasted 952 kg/m3 — swell factor (rounded to 3 decimals).", answerNum: 0.438, explanation:"Swell = (blasted−insitu)/insitu → example value 0.438."},
   {qno:35, section:'MEM', subtype:'Economics', type:'nat', marks:marksForQ(35), question:"Selling price copper=900 Rs/kg; mining cost=500 Rs/tonne; processing=2000 Rs/tonne; recovery 70%. Breakeven cutoff grade (%) rounded to 2 decimals.", answerNum: 0.48, explanation:"Compute cutoff grade = (mining+processing)/(price×recovery)."},
-  {qno:36,section: 'MN',  subtype: 'Mine Economics',  type: 'mcq',  marks: marksForQ(36),  question: "A coal mining company examines the option of buying two types of dumpers with the following details:<br><br> <h3> </h3> <table border=\"1\" cellspacing=\"0\" cellpadding=\"6\" style=\"border-collapse:collapse; width:480px; text-align:center; background:rgba(255,255,255,0.03); color:#fff; border:1px solid rgba(255,255,255,0.1);\"> <thead style=\"background:rgba(255,255,255,0.08);\"> <tr><th> Parameter</th><th>Type-1</th><th>Type-2</th><th>Constraints</th></tr></thead> <tbody> <tr><td> Capital cost per dumper (in ₹ crore)</td><td>3.0</td><td>4.0</td><td>Maximum capital available for purchasing is ₹120 crore </td></tr> <tr><td>Capacity in tons </td><td>40</td><td>50</td><td>Minimum daily tonnage to be hauled is 31,000</td></tr> <tr><td>Daily trips for each dumper </td><td>20</td><td>30</td><td>Minimum daily tonnage to be hauled is 31,000</td></tr> <tr><td> Operating cost (in ₹) per ton </td><td>300</td><td>200</td><td></td></tr> </tbody> </table><br> In order to minimize the operating cost, the optimum fleet of dumpers of Type-1 and Type-2, respectively, are ____? ",  options:["20, 15","0, 30","0, 31","40, 0"], answer:0, explanation:"Given data, <br> Option A: <br>Type-1 = 20 <br> capital cost = 20 x 3 = 60 crore <br> Total capacity in tons = 40 x 20 x 20 = 16,000 tons <br> Operating cost = 16,000 x 300 = 48,00,000 <br><br> Type-2 = 15 <br> capital cost = 15 x 4 = 60 crore <br> Total capacity in tons = 50 x 15 x 20 = 15,000 tons <br> Operating cost = 15000 x 200 = 30,00,000<br> Total operating cost = 48,00,000 + 30,00,000 = 78,00,000 <br> daily tonnage hauled = 16,000 + 15,000 = 31,000 (min) <br><br> Option B: <br>Type-1 = 0 <br> capital cost = 0<br> Total capacity in tons = 0 <br> Operating cost = 0 <br><br> Type-2 = 30 <br> capital cost = 30 x 4 = 120 crore <br> Total capacity in tons = 50 x 30 x 20 = 30,000 tons <br> Operating cost = 30000 x 200 = 60,00,000<br> daily tonnage hauled = 30,000 <br><br> Option C: <br>Type-1 = 0 <br> capital cost = 0 <br> Total capacity in tons = 0 <br> Operating cost = 0 <br><br> Type-2 = 31 <br> capital cost = 31 x 4 = 124 crore (maximum) <br> Total capacity in tons = 50 x 31 x 20 = 31,000 tons <br> Operating cost = 31000 x 200 = 62,00,000<br> Total operating cost = 62,00,000 <br> daily tonnage hauled = 31,000 (min) <br><br> Option D: <br>Type-1 = 40 <br> capital cost = 40 x 3 = 120 crore <br> Total capacity in tons = 40 x 40 x 20 = 32,000 tons <br> Operating cost = 32,000 x 300 = 96,00,000 <br><br> Type-2 = 0 <br> capital cost = 0 <br> Total capacity in tons = 0 <br> Operating cost = 0<br> Total operating cost = 96,00,000 <br> daily tonnage hauled = 32,000 (min) <br><br>Here operating cost is mimum at type-1 = 20, type-2 = 15 dumpers<br><Strong>So Option A is Correct</Strong>  "},
+  {qno:36, section: 'MN',  subtype: 'Mine Economics',  type: 'mcq',  marks: marksForQ(36),  question: "A coal mining company examines the option of buying two types of dumpers with the following details:<br><br> <h3> </h3> <table border=\"1\" cellspacing=\"0\" cellpadding=\"6\" style=\"border-collapse:collapse; width:480px; text-align:center; background:rgba(255,255,255,0.03); color:#fff; border:1px solid rgba(255,255,255,0.1);\"> <thead style=\"background:rgba(255,255,255,0.08);\"> <tr><th> Parameter</th><th>Type-1</th><th>Type-2</th><th>Constraints</th></tr></thead> <tbody> <tr><td> Capital cost per dumper (in ₹ crore)</td><td>3.0</td><td>4.0</td><td>Maximum capital available for purchasing is ₹120 crore </td></tr> <tr><td>Capacity in tons </td><td>40</td><td>50</td><td>Minimum daily tonnage to be hauled is 31,000</td></tr> <tr><td>Daily trips for each dumper </td><td>20</td><td>30</td><td>Minimum daily tonnage to be hauled is 31,000</td></tr> <tr><td> Operating cost (in ₹) per ton </td><td>300</td><td>200</td><td></td></tr> </tbody> </table><br> In order to minimize the operating cost, the optimum fleet of dumpers of Type-1 and Type-2, respectively, are ____? ",  options:["20, 15","0, 30","0, 31","40, 0"], answer:0, explanation:"Given data, <br> Option A: <br>Type-1 = 20 <br> capital cost = 20 x 3 = 60 crore <br> Total capacity in tons = 40 x 20 x 20 = 16,000 tons <br> Operating cost = 16,000 x 300 = 48,00,000 <br><br> Type-2 = 15 <br> capital cost = 15 x 4 = 60 crore <br> Total capacity in tons = 50 x 15 x 20 = 15,000 tons <br> Operating cost = 15000 x 200 = 30,00,000<br> Total operating cost = 48,00,000 + 30,00,000 = 78,00,000 <br> daily tonnage hauled = 16,000 + 15,000 = 31,000 (min) <br><br> Option B: <br>Type-1 = 0 <br> capital cost = 0<br> Total capacity in tons = 0 <br> Operating cost = 0 <br><br> Type-2 = 30 <br> capital cost = 30 x 4 = 120 crore <br> Total capacity in tons = 50 x 30 x 20 = 30,000 tons <br> Operating cost = 30000 x 200 = 60,00,000<br> daily tonnage hauled = 30,000 <br><br> Option C: <br>Type-1 = 0 <br> capital cost = 0 <br> Total capacity in tons = 0 <br> Operating cost = 0 <br><br> Type-2 = 31 <br> capital cost = 31 x 4 = 124 crore (maximum) <br> Total capacity in tons = 50 x 31 x 20 = 31,000 tons <br> Operating cost = 31000 x 200 = 62,00,000<br> Total operating cost = 62,00,000 <br> daily tonnage hauled = 31,000 (min) <br><br> Option D: <br>Type-1 = 40 <br> capital cost = 40 x 3 = 120 crore <br> Total capacity in tons = 40 x 40 x 20 = 32,000 tons <br> Operating cost = 32,000 x 300 = 96,00,000 <br><br> Type-2 = 0 <br> capital cost = 0 <br> Total capacity in tons = 0 <br> Operating cost = 0<br> Total operating cost = 96,00,000 <br> daily tonnage hauled = 32,000 (min) <br><br>Here operating cost is mimum at type-1 = 20, type-2 = 15 dumpers<br><Strong>So Option A is Correct</Strong>  "},
   {qno:37, section:'MEM', subtype:'Transport', type:'mcq', marks:marksForQ(37), question:"Transportation costs table and NW corner method — initial BFS transportation cost (Rs).", options:["90000","109000","293500","385000"], answer:1, explanation:"Applying NW-corner allocation yields 109000 (calculated)."},
   {qno:38, section:'MEM', subtype:'Lab Testing', type:'mcq', marks:marksForQ(38), question:"Triaxial test: axial strain=4.2e-3, volumetric strain=2.0e-3 at 50 MPa, confining 10 MPa. Closest modulus (GPa) and Poisson's ratio:", options:["5.11, 0.35","10.22, 0.35","5.11, 0.17","10.22, 0.17"], answer:0, explanation:"Derived E ≈5.11 GPa and ν≈0.35 from strain relationships."},
   {qno:39, section:'MEM', subtype:'Tunnel Support', type:'mcq', marks:marksForQ(39), question:"GRC for 3m radius tunnel with 300mm shotcrete after 5mm radial deformation — support reaction best represented by which line?", options:["P","Q","R","S"], answer:1, explanation:"Given lining capacity and stiffness, reaction matches line Q."},
@@ -341,6 +354,11 @@ const reviewUI = document.getElementById('reviewUI');
 const finalScoreEl = document.getElementById('finalScore');
 const reviewListEl = document.getElementById('reviewList');
 
+const countAnsweredEl = document.getElementById('count-answered');
+const countNotAnsweredEl = document.getElementById('count-not-answered');
+const countNotVisitedEl = document.getElementById('count-not-visited');
+const countReviewEl = document.getElementById('count-review');
+
 /* --------------------------
    TIMER UTIL
 --------------------------- */
@@ -391,6 +409,13 @@ function buildPalette(){
 function updatePaletteState(){
   // Called whenever answers/review/visited/currentIndex change
   const nodes = paletteEl.querySelectorAll('.pmini');
+
+  // counters for legend
+  let answeredCount = 0;
+  let notAnsweredCount = 0;
+  let notVisitedCount = 0;
+  let reviewCount = 0;
+
   nodes.forEach(btn => {
     const i = Number(btn.dataset.index);
     btn.classList.remove('answered','not-answered','review','active');
@@ -401,7 +426,8 @@ function updatePaletteState(){
     // review has high visibility (blue)
     if (state.review[i]){
       btn.classList.add('review');
-      // ensure review color shown even if answered; but keep answered class too for semantics if answered
+      reviewCount++;
+      // note: even if not visited, review flag counts as review in tally
     }
     // visited & answered vs not-answered vs not-visited
     if (!state.visited[i]){
@@ -411,20 +437,29 @@ function updatePaletteState(){
       btn.classList.remove('review'); // do not show review for not-visited (unless explicitly set; but visited controls main)
       // fallback to CSS default var(--not-visited)
       btn.style.background = '';
+      notVisitedCount++;
     } else {
       // visited
       // if answered -> answered
       if (state.answers[i] !== null && state.answers[i] !== undefined){
         btn.classList.add('answered');
         btn.classList.remove('not-answered');
+        answeredCount++;
       } else {
         // visited but not answered
         btn.classList.add('not-answered');
         btn.classList.remove('answered');
+        notAnsweredCount++;
       }
     }
     // let CSS handle colors — ensure classes present
   });
+
+  // update legend counts (display in parentheses as requested)
+  if (countAnsweredEl) countAnsweredEl.textContent = `(${answeredCount})`;
+  if (countNotAnsweredEl) countNotAnsweredEl.textContent = `(${notAnsweredCount})`;
+  if (countNotVisitedEl) countNotVisitedEl.textContent = `(${notVisitedCount})`;
+  if (countReviewEl) countReviewEl.textContent = `(${reviewCount})`;
 }
 
 /* --------------------------
@@ -550,7 +585,7 @@ function saveAnswer(){
   // visited stays true once visited
   state.visited[state.currentIndex] = true;
   updatePaletteState();
-  liveInfo.textContent = 'All the best !';
+  liveInfo.textContent = 'Answers Saved';
 }
 
 /* Clear: per request — should clear selection and statuses except "not visited"
@@ -668,7 +703,7 @@ function showSubmissionModal(message, actionFn, autoAction=false){
   modal.className = 'modal';
   modal.innerHTML = `<h2>Exam Submission</h2><p style="margin-top:8px">${message}</p>`;
   const btn = document.createElement('button');
-  btn.className = 'btn';
+  btn.className = 'btn ghostt';
   btn.textContent = 'View Results';
   btn.addEventListener('click', () => {
     overlay.remove();
@@ -766,7 +801,7 @@ function submitExam(){
 /* --------------------------
    START QUIZ
 --------------------------- */
-startBtn.addEventListener('click', ()=>{
+startBtn.addEventListener('click', ()=>{ 
   welcomeEl.classList.add('hidden');
   quizUI.classList.remove('hidden');
   quizUI.setAttribute('aria-hidden', 'false');
@@ -776,7 +811,7 @@ startBtn.addEventListener('click', ()=>{
 });
 
 /* KEYBOARD NAV */
-window.addEventListener('keydown', (e)=>{
+window.addEventListener('keydown', (e)=>{ 
   if (state.submitted) return;
   if (e.key === 'ArrowLeft'){ saveAnswer(); gotoQuestion(state.currentIndex - 1); }
   if (e.key === 'ArrowRight'){ saveAnswer(); gotoQuestion(state.currentIndex + 1); }
