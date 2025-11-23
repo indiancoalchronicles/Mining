@@ -137,6 +137,10 @@ html,body{
   color:var(--muted);
   margin-bottom:12px
 }
+.welcome p1{
+  color:var(--muted, #F5F5DC);
+  margin-bottom:12px
+}
 /* social links block above buttons */
 .social-section {
   display:flex;
@@ -251,21 +255,53 @@ html,body{
 .btn1 {
         background: radial-gradient(#BCCBAA, #FFFBFD);
         color: #000;
-        padding: 12px 28px;
-        font-size: 20px;
+        padding: 10px 16px;
+        font-size: 16px;
         border: none;
-        border-radius: 0;
+        box-shadow:0 0 14px rgba(255,152,0,0.85);
+        border-radius: 8px;
+        font-weight:700;
         cursor: pointer;
         transition: all 0.15s ease;
-        font-family: "Baskerville", serif;
+        font-family: "Baskerville", serif
     }
-    .btn1:hover { transform:translateY(-3px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
-.btn2 { background: radial-gradient(#F2AD7E, #F6E9D6); color: #000; padding: 12px 28px; font-size: 20px; border: none; border-radius: 0; cursor: pointer; transition: all 0.15s ease; font-family: "Baskerville", serif; }
-.btn2:hover { transform:translateY(-3px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
-.btn3 { background: radial-gradient(#FDD69E, #AFDD4E); color: #000; padding: 12px 28px; font-size: 20px; border: none; border-radius: 0; cursor: pointer; transition: all 0.15s ease; font-family: "Baskerville", serif; }
-.btn3:hover { transform:translateY(-3px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
-.btn4 { background: radial-gradient(#24FE41, #FDFC47); color: #000; padding: 12px 28px; font-size: 20px; border: none; border-radius: 0; cursor: pointer; transition: all 0.15s ease; font-family: "Baskerville", serif; }
-.btn4:hover { transform:translateY(-3px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
+    .btn1:hover { transform:translateY(-10px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
+.btn2 { background: radial-gradient(#F2AD7E, #F6E9D6); color: #000;
+        padding: 10px 16px;
+        font-size: 16px;
+        border: none;
+        box-shadow:0 0 14px rgba(255,152,0,0.85);
+        border-radius: 8px;
+        font-weight:700;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        font-family: "Baskerville", serif
+    }
+.btn2:hover { transform:translateY(-10px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
+.btn3 { background: radial-gradient(#FDD69E, #AFDD4E); color: #000;
+        padding: 10px 16px;
+        font-size: 16px;
+        border:2px solid #ffffff;
+        box-shadow:0 0 14px rgba(255,152,0,0.85);
+        border-radius: 8px;
+        font-weight:700;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        font-family: "Baskerville", serif
+    }
+.btn3:hover { transform:translateY(-10px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
+.btn4 { background: radial-gradient(#24FE41, #FDFC47); color: #000;
+        padding: 10px 16px;
+        font-size: 16px;
+        border: none;
+        box-shadow:0 0 14px rgba(255,152,0,0.85);
+        border-radius: 8px;
+        font-weight:700;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        font-family: "Baskerville", serif
+    }
+.btn4:hover { transform:translateY(-10px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
 
 /* restart-specific highlight (Option C: orange) */
 .btn-restart{
@@ -367,7 +403,7 @@ html,body{
 .timer{
   font-weight:700;
   color:var(--accent);
-  font-size:24px;
+  font-size:30px;
   text-align:right
 }
 .palette{
@@ -400,7 +436,7 @@ html,body{
   align-items:center;
   margin-top:12px
 }
-.small{font-size:13px;color:var(--muted)}
+.small{font-size:18px;color:var(--muted)}
 .submit-area{text-align:center;margin-top:12px}
 .result-wrap{text-align:center;margin-top:16px;color:var(--muted)}
 
@@ -545,8 +581,8 @@ html,body{
 .exam-mode-switch .btn2,
 .exam-mode-switch .btn3,
 .exam-mode-switch .btn4 {
-  font-size:14px;
-  padding:8px 12px;
+  font-size:18px;
+  padding:10px 16px;
 }
 
 /* ---------- NEW: compact instruction page behaviour ---------- */
@@ -625,7 +661,7 @@ html,body{
   background-clip: padding-box;
   border: none;
   color: #222;
-  padding: 12px 18px;
+  padding: 8px 12px;
   border-radius: 12px;
   font-weight:800;
   letter-spacing:0.4px;
@@ -890,28 +926,25 @@ html,body{
   </div>
 
   <!-- Right: Text -->
-  <div style="flex:1; min-width:260px; font-family:'Georgia', serif; color:#222; line-height:1.55; display:flex; flex-direction:column; justify-content:center;">
+  <div style="flex:1; min-width:260px; color:#F5F5DC; line-height:1.5; display:flex; flex-direction:column; justify-content:center;font-size: 18px;">
+    <p style="color: #FF9933; font-family: 'Times New Roman', Times, serif; text-align: justify;">
+        <strong>Indian Coal Chronicles </strong>  - Discover the latest insights and updates on the coal industry at Indian Coal Chronicles.We also power your journey toward cracking the  
+      <strong>GATE</strong> with clarity, strategy, and confidence.</p>
     
-    <p style="margin-bottom:14px; font-size:1rem;">
-      <strong>Indian Coal Chronicles</strong> — where India’s energy story meets your engineering ambitions.  
-      Just as coal powers the nation from deep underground, we power your journey toward cracking the  
-      <strong>GATE</strong> with clarity, strategy, and confidence.
-    </p>
-
-    <p style="margin-bottom:14px; font-size:1rem;">
-      We simplify complex mining and geology concepts through intuitive learning, real-world examples,  
+    
+       <p style="font-family: 'Times New Roman', Times, serif; text-align: justify;">
+       We simplify complex mining and geology concepts through intuitive learning, real-world examples,  
       smart test series, and focused mentorship — turning every challenge into a stepping stone  
-      toward success.
-    </p>
-
-    <p style="margin-bottom:0; font-size:1rem;">
-      Join us. Dive deep. Rise strong.  
+      toward success.</p>
+    <p style="color: #138808; font-family: 'Times New Roman', Times, serif; text-align: justify;">   Join us. Dive deep. Rise strong.  
       Let’s craft your future rank and write the next chapter of India’s engineering excellence.  
     </p>
-    <h1 style="margin-bottom:0; font-size:1rem;">
+
+    
+    <p style="color: #000080;font-size:22px; font-family: 'Times New Roman', Times, serif; text-align: center;">
        Practice the below exams for perfection.  
       <span style="font-size:1.2rem;">⚒️</span>
-    </h1>
+    </p>
 
   </div>
 
@@ -921,14 +954,14 @@ html,body{
       
 
       <!-- Exam mode selector -->
-      <div class="exam-mode-switch" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px;">
+      <div class="exam-mode-switch" style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-bottom:36px;">
         <button id="modeGateBtn"   class="btn1">Practice for GATE Mining 2026 Exam</button>
         <button id="modeCilBtn"    class="btn2">Practice for CIL MT (Mining) Exam</button>
         <button id="modeCustomBtn" class="btn3">Create Custom Exam</button>
       </div>
       
       
-      <h1>Fresh updates in Mining Industry</h1>
+      <h1 style="font-size:24px;">Fresh updates in Mining Industry</h1>
       
       <!-- YOUTUBE VIDEO: appears only on welcome page -->
       <div id="welcomeVideoContainer">
@@ -938,8 +971,8 @@ html,body{
         
       <!-- GATE instructions -->
       <div id="gateInstructions" class="hidden">
-        <p><strong>GATE - Mining Practice Paper</strong>.</p>
-        <div style="text-align:left;max-width:820px;margin:12px auto;color:var(--muted);">
+        <h1><strong>GATE - Mining Practice Paper</strong>.</h1>
+        <div style="text-align:left;max-width:820px;line-height: 1.6;margin:15px auto;color:var(--muted);font-size: 20px;>
           <strong>Instructions:</strong>
           <ol style="margin-top: 8px; line-height: 1.6;">
             <li>This paper comprises two sections: <strong>General Aptitude (GA)</strong> and <strong>Mining Subject (MN)</strong>.</li>
@@ -970,14 +1003,14 @@ html,body{
       
       <!-- CIL MT instructions -->
       <div id="cilInstructions" class="hidden">
-        <p><strong>CIL MT (Mining) – Practice Test</strong></p>
-        <div style="text-align:left;max-width:820px;margin:12px auto;color:var(--muted);">
+        <h1><strong>CIL MT (Mining) – Practice Exam</strong></h1>
+        <div style="text-align:left;max-width:820px;line-height: 1.6;margin:15px auto;color:var(--muted);font-size: 20px;>
           <strong>Instructions:</strong>
           <ol style="margin-top: 8px; line-height: 1.6;">
             <li>This paper comprises questions from the <strong>Mining (MN)</strong> part only.</li>
             <li>Total number of questions in actual exam: <strong>100</strong> (this app uses available bank).</li>
             <li>Each question carries <strong>1 mark</strong>, total of <strong>100 marks</strong>.</li>
-            <li>Questions are selected from the Mining question bank (any topic / year) and shuffled.</li>
+            <li>Questions are selected from the randomly from previous year GATE, Mining Exams.</li>
             <li>Use this mode to simulate CIL MT (Mining) style objective practice.</li>
           </ol>
         </div>
@@ -985,12 +1018,12 @@ html,body{
 
         <!-- Custom practice configuration -->
       <div id="customConfig" class="hidden">
-        <p><strong>Custom Practice</strong></p>
+        <h1><strong>Custom Practice</strong></h1>
         <div style="max-width:820px;margin:12px auto;padding:12px;border-radius:10px;background:rgba(0,0,0,0.15);color:var(--muted);">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;font-size:14px;">
             <div>
-              <label>Year</label>
-              <select id="filterYear" style="width:100%;padding:6px;border-radius:6px;border:none;">
+              <label style="font-size: 18px;">Year</label>
+              <select id="filterYear" style="width:100%;padding:8px;font-size:15px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
                 <option value="2025">2025</option>
                 <option value="2024">2024</option>
@@ -1014,32 +1047,32 @@ html,body{
               </select>
             </div>
             <div class="custom-select-wrapper">
-              <label>Section</label>
-              <select id="filterSection" style="width:100%;padding:6px;border-radius:6px;border:none;">
+              <label style="font-size: 18px;">Section</label>
+              <select id="filterSection" style="width:100%;padding:8px;font-size:15px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
                 <option value="GA">GA</option>
                 <option value="MN">MN</option>
               </select>
             </div>
             <div class="custom-select-wrapper">
-              <label>Type</label>
-              <select id="filterType" style="width:100%;padding:6px;border-radius:6px;border:none;">
+              <label style="font-size: 18px;">Type</label>
+              <select id="filterType" style="width:100%;padding:8px;font-size:15px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
                 <option value="mcq">MCQ</option>
                 <option value="nat">NAT</option>
               </select>
             </div>
             <div class="custom-select-wrapper">
-              <label>Marks</label>
-              <select id="filterMarks" style="width:100%;padding:6px;border-radius:6px;border:none;">
+              <label style="font-size: 18px;">Marks</label>
+              <select id="filterMarks" style="width:100%;padding:8px;font-size:15px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
                 <option value="1">1 mark</option>
                 <option value="2">2 marks</option>
               </select>
             </div>
             <div class="custom-select-wrapper">
-              <label>Subsection</label>
-              <select id="filterSubsection" style="width:100%;padding:6px;border-radius:6px;border:none;">
+              <label style="font-size: 18px;">Subsection</label>
+              <select id="filterSubsection" style="width:100%;padding:8px;font-size:15px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
                 <option value="Engineering Mathematics">Engineering Mathematics</option>
                 <option value="Mine Geology, Mine Development and Surveying">Mine Geology, Mine Development and Surveying</option>
@@ -1050,8 +1083,8 @@ html,body{
               </select>
             </div>
             <div class="custom-select-wrapper">
-              <label>Sub-subsection</label>
-              <select id="filterSubsubsection" style="width:100%;padding:6px;border-radius:6px;border:none;">
+              <label style="font-size: 18px;">Sub-subsection</label>
+              <select id="filterSubsubsection" style="width:100%;padding:8px;font-size:15px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
                 <option value="Engineering Mathematics">Engineering Mathematics</option>
                 <option value="Engineering Mechanics">Engineering Mechanics</option>
@@ -1070,9 +1103,9 @@ html,body{
               </select>
             </div>
             <div class="custom-select-wrapper">
-              <label>No. of Questions</label>
+              <label style="font-size: 18px;">No. of Questions</label>
               <input id="filterCount" type="number" min="1" max="200"
-                     style="width:100%;padding:6px;border-radius:6px;border:none;" value="100">
+                     style="width:100%;padding:8px;font-size:15px;border-radius:6px;border:none;" value="100">
             </div>
           </div>
           <div style="text-align:center;margin-top:12px;">
@@ -2931,7 +2964,7 @@ $$ f(x)= \\begin{cases} -k, & \\text{ for } -\\pi < x < 0 \\\\ k, & \\text{ for 
     subsubsection: "Mineral Economics",
     type: "nat",
     marks: 1,
-    question: `The cost of a screw compressor with life 15 years is ₹2,100,000. If depreciation charged using sum-of-the-years-digits method at the end of 4th year is ₹200,000, the salvage value (₹) is (round off to 1 decimal place)`,
+    question: `The cost of a ***** compressor with life 15 years is ₹2,100,000. If depreciation charged using sum-of-the-years-digits method at the end of 4th year is ₹200,000, the salvage value (₹) is (round off to 1 decimal place)`,
     answerMin: 100000.0,
     answerMax: 100000.0,
     explanation: ""
@@ -5301,7 +5334,7 @@ $$ f(x)= \\begin{cases} -k, & \\text{ for } -\\pi < x < 0 \\\\ k, & \\text{ for 
     "question": "The availability of water in the root zone for plant use is maximum in the case of",
     "options": [ "sand","loam",  "clay",  "gravel"  ],
     "answer": 1,
-    "explanation": "Loam soils provide a favorable balance between water retention and drainage: they hold sufficient plant-available water while allowing root penetration and oxygenation. Sand and gravel drain too quickly; clay retains water but much of it may be unavailable to plants."
+    "explanation": "Loam soils provide a favorable balance between water retention and drainage: they hold sufficient plant-available water while allowing root ***** and oxygenation. Sand and gravel drain too quickly; clay retains water but much of it may be unavailable to plants."
   },
   {
     "qno": 349,
@@ -6084,7 +6117,7 @@ $$ f(x)= \\begin{cases} -k, & \\text{ for } -\\pi < x < 0 \\\\ k, & \\text{ for 
     answerMin: 56.3,
     answerMax: 56.3,
     explanation:
-      'Penetration per rev = 0.15 m/min ÷ 180 rev/min = 0.0008333 m. Work = F × p = 6750 N × 0.0008333 m ≈ 56.3 N·m.'
+      '***** per rev = 0.15 m/min ÷ 180 rev/min = 0.0008333 m. Work = F × p = 6750 N × 0.0008333 m ≈ 56.3 N·m.'
   },
   {
     qno: 459,
