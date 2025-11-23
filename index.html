@@ -25,6 +25,11 @@
   --review: #3498db;       /* blue */
   --not-visited: #7f8c8d;  /* grey */
   --not-answered: #e74c3c; /* red */
+
+  /* Custom filters accent */
+  --custom-bg: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  --custom-accent: linear-gradient(90deg, #F6D365, #FDA085);
+  --custom-border: rgba(255,255,255,0.08);
 }
 
 /* legend styling */
@@ -169,11 +174,28 @@ html,body{
   font-weight:500;
 }
 
-/* youtube container appears lower on the page */
+/* youtube container appears lower on the page - centered left-right */
 #welcomeVideoContainer{
-  margin-top:22px;
+  margin:22px auto; /* center horizontally within card */
   display:flex;
   justify-content:center;
+  width:100%;
+  max-width:700px;
+}
+
+/* ensure inner iframe occupies full width of the container */
+#welcomeVideoInner{
+  width:100%;
+  position:relative;
+  padding-bottom:56.25%;
+  height:0;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+/* iframe style applied when created */
+.welcome-iframe{
+  position:absolute; top:0; left:0; width:100%; height:100%; border-radius:12px; border:0;
 }
 
 .btn{
@@ -232,88 +254,19 @@ html,body{
         padding: 12px 28px;
         font-size: 20px;
         border: none;
-        border-radius: 0; /* Changed to 0 for sharp edges */
+        border-radius: 0;
         cursor: pointer;
-        /* box-shadow: 0 5px #144a8a; Removed for plain look */
         transition: all 0.15s ease;
-        font-family: "Baskerville", serif; /* Changed font to Baskerville */
+        font-family: "Baskerville", serif;
     }
+    .btn1:hover { transform:translateY(-3px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
+.btn2 { background: radial-gradient(#F2AD7E, #F6E9D6); color: #000; padding: 12px 28px; font-size: 20px; border: none; border-radius: 0; cursor: pointer; transition: all 0.15s ease; font-family: "Baskerville", serif; }
+.btn2:hover { transform:translateY(-3px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
+.btn3 { background: radial-gradient(#FDD69E, #AFDD4E); color: #000; padding: 12px 28px; font-size: 20px; border: none; border-radius: 0; cursor: pointer; transition: all 0.15s ease; font-family: "Baskerville", serif; }
+.btn3:hover { transform:translateY(-3px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
+.btn4 { background: radial-gradient(#24FE41, #FDFC47); color: #000; padding: 12px 28px; font-size: 20px; border: none; border-radius: 0; cursor: pointer; transition: all 0.15s ease; font-family: "Baskerville", serif; }
+.btn4:hover { transform:translateY(-3px); box-shadow:0 8px 15px rgba(0,0,0,0.12); }
 
-    .btn1:hover {
-        background: radial-gradient(#F6F1EB, #2EFBC5); /* This already changes the color on hover */
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Added shadow effect on hover */
-    }
-
-    .btn1:active {
-        box-shadow: 0 2px #144a8a; /* This shadow remains for the active (click) state */
-        transform: translateY(3px);
-    }
-.btn2 {
-        background: radial-gradient(#F2AD7E, #F6E9D6);
-        color: #000;
-        padding: 12px 28px;
-        font-size: 20px;
-        border: none;
-        border-radius: 0; /* Changed to 0 for sharp edges */
-        cursor: pointer;
-        /* box-shadow: 0 5px #144a8a; Removed for plain look */
-        transition: all 0.15s ease;
-        font-family: "Baskerville", serif; /* Changed font to Baskerville */
-    }
-
-    .btn2:hover {
-        background: radial-gradient(#F6F1EB, #2EFBC5); /* This already changes the color on hover */
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Added shadow effect on hover */
-    }
-
-    .btn2:active {
-        box-shadow: 0 2px #144a8a; /* This shadow remains for the active (click) state */
-        transform: translateY(3px);
-    }
-.btn3 {
-        background: radial-gradient(#FDD69E, #AFDD4E);
-        color: #000;
-        padding: 12px 28px;
-        font-size: 20px;
-        border: none;
-        border-radius: 0; /* Changed to 0 for sharp edges */
-        cursor: pointer;
-        /* box-shadow: 0 5px #144a8a; Removed for plain look */
-        transition: all 0.15s ease;
-        font-family: "Baskerville", serif; /* Changed font to Baskerville */
-    }
-
-    .btn3:hover {
-        background: radial-gradient(#F6F1EB, #2EFBC5); /* This already changes the color on hover */
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Added shadow effect on hover */
-    }
-
-    .btn3:active {
-        box-shadow: 0 2px #144a8a; /* This shadow remains for the active (click) state */
-        transform: translateY(3px);
-    }
-.btn4 {
-        background: radial-gradient(#24FE41, #FDFC47);
-        color: #000;
-        padding: 12px 28px;
-        font-size: 20px;
-        border: none;
-        border-radius: 0; /* Changed to 0 for sharp edges */
-        cursor: pointer;
-        /* box-shadow: 0 5px #144a8a; Removed for plain look */
-        transition: all 0.15s ease;
-        font-family: "Baskerville", serif; /* Changed font to Baskerville */
-    }
-
-    .btn4:hover {
-        background: radial-gradient(#FDD69E, #AFDD4E); /* This already changes the color on hover */
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Added shadow effect on hover */
-    }
-
-    .btn4:active {
-        box-shadow: 0 2px #144a8a; /* This shadow remains for the active (click) state */
-        transform: translateY(3px);
-    }
 /* restart-specific highlight (Option C: orange) */
 .btn-restart{
   background:#ff9800;
@@ -326,7 +279,6 @@ html,body{
   box-shadow:0 0 18px rgba(255,152,0,1);
   transform:scale(1.06);
 }
-/* (violet class unused now, kept as-is) */
 .btn.violet{
   background:#8a2be2;
   color:#fff;
@@ -457,7 +409,7 @@ html,body{
   display:none;
   margin-top:18px;
   background:#ffffff;
-  color:#black;
+  color:#000;
   padding:18px;
   border-radius:10px;
   border:1px solid rgba(0,0,0,0.06);
@@ -587,8 +539,12 @@ html,body{
 .modal p{color:#fff;font-size:1.1rem}
 .modal button{margin-top:16px}
 
-/* Small tweak for mode buttons */
-.exam-mode-switch .btn {
+/* Small tweak for mode buttons — cover both .btn and btn1..btn4 */
+.exam-mode-switch .btn,
+.exam-mode-switch .btn1,
+.exam-mode-switch .btn2,
+.exam-mode-switch .btn3,
+.exam-mode-switch .btn4 {
   font-size:14px;
   padding:8px 12px;
 }
@@ -613,17 +569,103 @@ html,body{
 /* keep exam-mode-selector hidden in compact view */
 .welcome.mode-active .exam-mode-switch { display:none !important; }
 
-/* ---------- NEW: hide the "Image Left - Text Right Intro Section" when mode-active ----------
-   Target the outer flex container that contains the left image (left.jpeg) by using :has()
-   This hides the whole Image Left - Text Right Intro Section when any mode is active.
-   Note: :has() is supported in modern browsers (Chrome/Safari/Edge/Firefox recent versions).
------------------------------------------------------------------------ */
-.welcome.mode-active div:has(div>img[src*="left.jpeg"]) { display: none !important; }
+/* hide the Image Left - Text Right Intro Section when mode-active using intro-flex class fallback */
+.welcome.mode-active .intro-flex { display:none !important; }
+
+/* ---------- CUSTOM FILTERS AESTHETICS ---------- */
+/* base custom config */
+#customConfig {
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+/* When custom mode is active, add special glassy card look and alternate controls */
+#customConfig.custom-styled {
+  background: var(--custom-bg);
+  border-radius:14px;
+  padding:16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.02);
+  border: 1px solid var(--custom-border);
+  transform: translateY(-2px);
+}
+
+/* grid changes: bold labels, rounded selects, subtle icon */
+#customConfig.custom-styled label {
+  display:block;
+  font-weight:700;
+  color: #fff;
+  margin-bottom:6px;
+  font-size:13px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+}
+
+#customConfig.custom-styled select,
+#customConfig.custom-styled input[type="number"]{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.02));
+  color:#fff;
+  font-weight:600;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+/* hover and focus uplift */
+#customConfig.custom-styled select:focus,
+#customConfig.custom-styled input[type="number"]:focus {
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.32);
+}
+
+/* prepare button style in custom mode */
+#customConfig.custom-styled #prepareCustomBtn {
+  background: var(--custom-accent);
+  background-clip: padding-box;
+  border: none;
+  color: #222;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight:800;
+  letter-spacing:0.4px;
+  box-shadow: 0 10px 24px rgba(246,211,101,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+/* small decorative heading within custom area */
+#customConfig.custom-styled::before{
+  content:"Customize your set";
+  display:block;
+  text-align:center;
+  margin-bottom:12px;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:0.6px;
+  font-size:16px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+}
+
+/* subtle icon accent for each select */
+.custom-select-wrapper{ position:relative; }
+.custom-select-wrapper::after{
+  content:"⚒";
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  opacity:0.7;
+  pointer-events:none;
+}
+
+/* when not in custom-styled — keep original look but with slight spacing */
+#customConfig { margin-top:12px; }
 
 /* small responsiveness tweak */
 @media (max-width:1000px){
   .layout{flex-direction:column}
   .right{order:-1}
+  #welcomeVideoContainer{ max-width:95%; }
 }
   </style>
 
@@ -707,26 +749,6 @@ html,body{
     .social-btn .label { display:none; } /* show icons only on narrow screens */
   }
 </style>
-<style>
-  .social-btns {
-    display: flex;
-    justify-content: center;   /* centers horizontally */
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 14px;                 /* spacing between buttons */
-    margin: 20px 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  /* smaller label style if you want only icons */
-  .social-btn .label { display:inline-block; }
-
-  @media (max-width:480px){
-    .social-btn { padding:8px; gap:8px; font-size:13px; }
-    .social-btn .label { display:none; } /* icons only on small screen */
-  }
-</style>
 
 <div class="social-btns" aria-label="Social links">
   <a class="social-btn fb" href="https://www.facebook.com/924506984084381" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">
@@ -780,7 +802,7 @@ html,body{
   </a>
 </div>
 <!-- Image Left - Text Right Intro Section -->
-<div style="
+<div class="intro-flex" style="
   display:flex;
   align-items:stretch;
   gap:24px;
@@ -848,11 +870,8 @@ html,body{
       <h1>Fresh updates in Mining Industry</h1>
       
       <!-- YOUTUBE VIDEO: appears only on welcome page -->
-      <div id="welcomeVideoContainer" style="margin-top:20px;width:100%;max-width:700px;display:flex;justify-content:center;">
-        <!-- iframe src is set/cleared by JS to control autoplay when showing/hiding -->
-        <div id="welcomeVideoInner" style="width:100%;max-width:700px;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
-          <!-- iframe will be injected here by JS -->
-        </div>
+      <div id="welcomeVideoContainer">
+        <div id="welcomeVideoInner"></div>
       </div>
 
         
@@ -905,10 +924,10 @@ html,body{
 
       <!-- Custom practice configuration -->
       <div id="customConfig" class="hidden">
-        <p><strong>Custom Practice</strong></p>
+        <p style="color:var(--muted)"><strong>Custom Practice</strong></p>
         <div style="max-width:820px;margin:12px auto;padding:12px;border-radius:10px;background:rgba(0,0,0,0.15);color:var(--muted);">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;font-size:14px;">
-            <div>
+            <div class="custom-select-wrapper">
               <label>Year</label>
               <select id="filterYear" style="width:100%;padding:6px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
@@ -931,10 +950,9 @@ html,body{
                 <option value="2009">2009</option>
                 <option value="2008">2008</option>
                 <option value="2007">2007</option>
-
               </select>
             </div>
-            <div>
+            <div class="custom-select-wrapper">
               <label>Section</label>
               <select id="filterSection" style="width:100%;padding:6px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
@@ -942,7 +960,7 @@ html,body{
                 <option value="MN">MN</option>
               </select>
             </div>
-            <div>
+            <div class="custom-select-wrapper">
               <label>Type</label>
               <select id="filterType" style="width:100%;padding:6px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
@@ -950,7 +968,7 @@ html,body{
                 <option value="nat">NAT</option>
               </select>
             </div>
-            <div>
+            <div class="custom-select-wrapper">
               <label>Marks</label>
               <select id="filterMarks" style="width:100%;padding:6px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
@@ -958,7 +976,7 @@ html,body{
                 <option value="2">2 marks</option>
               </select>
             </div>
-            <div>
+            <div class="custom-select-wrapper">
               <label>Subsection</label>
               <select id="filterSubsection" style="width:100%;padding:6px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
@@ -970,7 +988,7 @@ html,body{
                 <option value="Mineral Economics, Mine Planning, Systems Engineering">Mineral Economics, Mine Planning, Systems Engineering</option>
               </select>
             </div>
-            <div>
+            <div class="custom-select-wrapper">
               <label>Sub-subsection</label>
               <select id="filterSubsubsection" style="width:100%;padding:6px;border-radius:6px;border:none;">
                 <option value="all">Any</option>
@@ -990,7 +1008,7 @@ html,body{
                 <option value="Mine Planning">Mine Planning</option>
               </select>
             </div>
-            <div>
+            <div class="custom-select-wrapper">
               <label>No. of Questions</label>
               <input id="filterCount" type="number" min="1" max="200"
                      style="width:100%;padding:6px;border-radius:6px;border:none;" value="100">
@@ -1083,7 +1101,8 @@ html,body{
 --------------------------- */
 
 const QUESTION_BANK = [
-  {
+
+{
   "qno": 56,
   "year": 2024,
   "section": "MN",
@@ -11177,7 +11196,7 @@ explanation: "Series path reliabilities: R₁ = 0.6×0.6 = 0.36; R₂ = 0.5×0.5
     "answer": 2,
     "explanation": "Extra resistance from grade = \\( W \\, \\sin 5° \\).\nNet pull becomes ≈ 9.5 kN."
   },
-  
+
   {
     qno: 1101,
     year: 2024,
@@ -11778,11 +11797,7 @@ explanation: "Series path reliabilities: R₁ = 0.6×0.6 = 0.36; R₂ = 0.5×0.5
     answer: 0,
     explanation: " "
   }
-
-
-
-
-  
+ 
 ];
 
 /* Active exam questions */
@@ -11793,7 +11808,6 @@ let QUESTIONS = [];
 --------------------------- */
 
 function marksForQ(qno){
-  // Original GATE pattern
   if ((qno>=1 && qno<=5) || (qno>=11 && qno<=35)) return 1;
   if ((qno>=6 && qno<=10) || (qno>=36 && qno<=65)) return 2;
   return 1;
@@ -11862,41 +11876,33 @@ const backFromInstructionsBtn = document.getElementById('backFromInstructionsBtn
 
 /* --------------------------
    YouTube show/hide helpers
-   - video ID: XopdRESIJc4
-   Behavior:
-   - Video appears only on welcome page (autoplays muted, loop)
-   - Video removed (src cleared) when any mode/start button pressed
-   - Video recreated when returning back to home
 --------------------------- */
 const YT_ID = 'XopdRESIJc4';
 function buildWelcomeIframeSrc(){
-  // autoplay=1, mute=1, loop=1, playlist=<ID> to make loop work
   return `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&loop=1&playlist=${YT_ID}&rel=0&modestbranding=1`;
 }
 function showWelcomeVideo(){
   if (!welcomeVideoInner) return;
-  // If already contains iframe, do nothing
   if (welcomeVideoInner.querySelector('iframe')) return;
   const iframe = document.createElement('iframe');
   iframe.src = buildWelcomeIframeSrc();
+  iframe.className = 'welcome-iframe';
   iframe.frameBorder = "0";
   iframe.allow = "autoplay; encrypted-media";
   iframe.allowFullscreen = true;
-  iframe.style = "position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;";
   welcomeVideoInner.appendChild(iframe);
-  // ensure container visible
   if (welcomeVideoContainer) welcomeVideoContainer.style.display = 'flex';
 }
 function hideWelcomeVideo(){
   if (!welcomeVideoInner) return;
-  // remove iframe to stop playback
   welcomeVideoInner.querySelectorAll('iframe').forEach(f => f.remove());
-  // hide container visually
   if (welcomeVideoContainer) welcomeVideoContainer.style.display = 'none';
 }
 
 /* --------------------------
    Mode switching
+   - When CUSTOM is selected, apply a 'custom-styled' class to the customConfig
+     so the filter UI changes its visuals as requested.
 --------------------------- */
 function setExamMode(mode){
   state.examMode = mode;
@@ -11904,9 +11910,17 @@ function setExamMode(mode){
   cilInstructionsEl.classList.add('hidden');
   customConfigEl.classList.add('hidden');
 
+  // remove previous custom styling
+  customConfigEl.classList.remove('custom-styled');
+
   if (mode === 'GATE') gateInstructionsEl.classList.remove('hidden');
   else if (mode === 'CIL') cilInstructionsEl.classList.remove('hidden');
-  else if (mode === 'CUSTOM') customConfigEl.classList.remove('hidden');
+  else if (mode === 'CUSTOM') {
+    customConfigEl.classList.remove('hidden');
+    // Add the special visual styling for the custom config area
+    // This answers: "after pressing the Custom create paper, change graphics / aesthetics..."
+    customConfigEl.classList.add('custom-styled');
+  }
 
   // show Start button and Back button only after a mode is chosen (not on very first opening)
   startBtn.style.display = 'inline-block';
@@ -11915,8 +11929,6 @@ function setExamMode(mode){
   // hide the welcome video immediately when a mode is chosen
   hideWelcomeVideo();
 
-  // ---> NEW: add compact "mode-active" class and mode-specific class
-  // so only social + related instruction + start/back remains visible
   welcomeEl.classList.remove('mode-gate','mode-cil','mode-custom');
   welcomeEl.classList.add('mode-active');
   if (mode === 'GATE') welcomeEl.classList.add('mode-gate');
@@ -11989,6 +12001,7 @@ function shuffleArray(a){
 
 /* --------------------------
    Full GATE exam builder (65 Q) – uses QUESTION_BANK
+   (unchanged logic from your original)
 --------------------------- */
 function buildRandomGateExam(){
   const gaPool = QUESTION_BANK.filter(q => q.section === 'GA');
@@ -12335,7 +12348,15 @@ function buildCustomExamFromFilters(){
 
 prepareCustomBtn.addEventListener('click', ()=>{
   buildCustomExamFromFilters();
-  if (QUESTIONS.length) alert('Custom question set prepared. Click "Start" to begin.');
+  if (QUESTIONS.length) {
+    // Visual feedback: briefly pulse the prepare button and update its label
+    const btn = prepareCustomBtn;
+    const prevText = btn.textContent;
+    btn.textContent = 'Prepared ✓';
+    btn.style.transform = 'scale(0.98)';
+    setTimeout(()=>{ btn.style.transform=''; btn.textContent = prevText; }, 900);
+    alert('Custom question set prepared. Click "Start" to begin.');
+  }
 });
 
 /* --------------------------
