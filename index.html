@@ -69,6 +69,7 @@ html,body{
   color:#000;
 }
 
+/* ---------------- BACKGROUND SLIDESHOW ---------------- */
 .container-wrap{
   min-height:100vh;
   background-image: url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/background.png');
@@ -79,12 +80,34 @@ html,body{
   justify-content:center;
   position:relative;
 }
+
+/* Slideshow images */
+.bg-slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  animation: fadeSlide 40s infinite;
+  z-index:-2;
+}
+
+/* Fade animation */
+@keyframes fadeSlide {
+  0%   {opacity:1;}
+  10%  {opacity:1;}
+  20%  {opacity:0;}
+  100% {opacity:0;}
+}
+
+/* Overlay between slideshow and card */
 .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(255,255,255,0.25),  rgba(255,255,255,0.40));
+  background:linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.40));
   z-index:0;
 }
+
 .card{
   position:relative;
   z-index:2;
@@ -109,6 +132,50 @@ html,body{
   color:var(--muted);
   margin-bottom:12px
 }
+/* social links block above buttons */
+.social-section {
+  display:flex;
+  justify-content:center;
+  margin-bottom:12px;
+}
+.social-links {
+  display:flex;
+  gap:8px;
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.social-links li a{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,0.06);
+  text-decoration:none;
+  color:var(--accent);
+  background:transparent;
+  font-weight:600;
+  font-size:13px;
+}
+.social-links li a:hover{
+  background:var(--accent);
+  color:#fff;
+}
+
+/* welcome note (moved below buttons as requested) */
+.welcome-note {
+  margin-top:10px;
+  font-size:18px;
+  color:var(--muted);
+  font-weight:500;
+}
+
+/* youtube container appears lower on the page */
+#welcomeVideoContainer{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+}
+
 .btn{
   padding:10px 16px;
   border-radius:8px;
@@ -159,6 +226,94 @@ html,body{
   cursor:pointer;
   font-size:16px
 }
+.btn1 {
+        background: radial-gradient(#BCCBAA, #FFFBFD);
+        color: #000;
+        padding: 12px 28px;
+        font-size: 20px;
+        border: none;
+        border-radius: 0; /* Changed to 0 for sharp edges */
+        cursor: pointer;
+        /* box-shadow: 0 5px #144a8a; Removed for plain look */
+        transition: all 0.15s ease;
+        font-family: "Baskerville", serif; /* Changed font to Baskerville */
+    }
+
+    .btn1:hover {
+        background: radial-gradient(#F6F1EB, #2EFBC5); /* This already changes the color on hover */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Added shadow effect on hover */
+    }
+
+    .btn1:active {
+        box-shadow: 0 2px #144a8a; /* This shadow remains for the active (click) state */
+        transform: translateY(3px);
+    }
+.btn2 {
+        background: radial-gradient(#F2AD7E, #F6E9D6);
+        color: #000;
+        padding: 12px 28px;
+        font-size: 20px;
+        border: none;
+        border-radius: 0; /* Changed to 0 for sharp edges */
+        cursor: pointer;
+        /* box-shadow: 0 5px #144a8a; Removed for plain look */
+        transition: all 0.15s ease;
+        font-family: "Baskerville", serif; /* Changed font to Baskerville */
+    }
+
+    .btn2:hover {
+        background: radial-gradient(#F6F1EB, #2EFBC5); /* This already changes the color on hover */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Added shadow effect on hover */
+    }
+
+    .btn2:active {
+        box-shadow: 0 2px #144a8a; /* This shadow remains for the active (click) state */
+        transform: translateY(3px);
+    }
+.btn3 {
+        background: radial-gradient(#FDD69E, #AFDD4E);
+        color: #000;
+        padding: 12px 28px;
+        font-size: 20px;
+        border: none;
+        border-radius: 0; /* Changed to 0 for sharp edges */
+        cursor: pointer;
+        /* box-shadow: 0 5px #144a8a; Removed for plain look */
+        transition: all 0.15s ease;
+        font-family: "Baskerville", serif; /* Changed font to Baskerville */
+    }
+
+    .btn3:hover {
+        background: radial-gradient(#F6F1EB, #2EFBC5); /* This already changes the color on hover */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Added shadow effect on hover */
+    }
+
+    .btn3:active {
+        box-shadow: 0 2px #144a8a; /* This shadow remains for the active (click) state */
+        transform: translateY(3px);
+    }
+.btn4 {
+        background: radial-gradient(#24FE41, #FDFC47);
+        color: #000;
+        padding: 12px 28px;
+        font-size: 20px;
+        border: none;
+        border-radius: 0; /* Changed to 0 for sharp edges */
+        cursor: pointer;
+        /* box-shadow: 0 5px #144a8a; Removed for plain look */
+        transition: all 0.15s ease;
+        font-family: "Baskerville", serif; /* Changed font to Baskerville */
+    }
+
+    .btn4:hover {
+        background: radial-gradient(#FDD69E, #AFDD4E); /* This already changes the color on hover */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Added shadow effect on hover */
+    }
+
+    .btn4:active {
+        box-shadow: 0 2px #144a8a; /* This shadow remains for the active (click) state */
+        transform: translateY(3px);
+    }
 /* restart-specific highlight (Option C: orange) */
 .btn-restart{
   background:#ff9800;
@@ -302,7 +457,7 @@ html,body{
   display:none;
   margin-top:18px;
   background:#ffffff;
-  color:#000;
+  color:#black;
   padding:18px;
   border-radius:10px;
   border:1px solid rgba(0,0,0,0.06);
@@ -438,6 +593,34 @@ html,body{
   padding:8px 12px;
 }
 
+/* ---------- NEW: compact instruction page behaviour ---------- */
+/* When welcome has .mode-active, hide all its children by default */
+.welcome.mode-active > * { display: none; }
+
+/* But show the social buttons, the selected instruction pane, the start & back wrappers */
+.welcome.mode-active .social-btns { display:flex !important; justify-content:center; margin:20px 0 !important; }
+.welcome.mode-active #startBtn { display:inline-block !important; margin-top:12px !important; }
+.welcome.mode-active #backInstructionsWrapper { display:block !important; margin-top:10px !important; }
+
+/* show only the active instruction pane (one of these) */
+.welcome.mode-active.mode-gate #gateInstructions { display:block !important; }
+.welcome.mode-active.mode-cil  #cilInstructions  { display:block !important; }
+.welcome.mode-active.mode-custom #customConfig { display:block !important; }
+
+/* ensure video is hidden visually if mode-active */
+.welcome.mode-active #welcomeVideoContainer { display:none !important; }
+
+/* keep exam-mode-selector hidden in compact view */
+.welcome.mode-active .exam-mode-switch { display:none !important; }
+
+/* ---------- NEW: hide the "Image Left - Text Right Intro Section" when mode-active ----------
+   Target the outer flex container that contains the left image (left.jpeg) by using :has()
+   This hides the whole Image Left - Text Right Intro Section when any mode is active.
+   Note: :has() is supported in modern browsers (Chrome/Safari/Edge/Firefox recent versions).
+----------------------------------------------------------------------- */
+.welcome.mode-active div:has(div>img[src*="left.jpeg"]) { display: none !important; }
+
+/* small responsiveness tweak */
 @media (max-width:1000px){
   .layout{flex-direction:column}
   .right{order:-1}
@@ -453,6 +636,20 @@ html,body{
 </head>
 <body>
 <div class="container-wrap">
+
+  <!-- BACKGROUND SLIDESHOW IMAGES -->
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/background.png'); animation-delay:0s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg1.jpg'); animation-delay:4s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg2.jpg'); animation-delay:8s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg3.jpg'); animation-delay:12s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg4.jpg'); animation-delay:16s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg5.jpg'); animation-delay:20s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg6.jpg'); animation-delay:24s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg7.jpg'); animation-delay:28s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg8.jpg'); animation-delay:32s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg9.jpg'); animation-delay:36s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg10.jpg'); animation-delay:38s;"></div>
+
   <div class="overlay" aria-hidden="true"></div>
 
   <div class="card" role="application" aria-label="Mining exam quiz">
@@ -465,15 +662,200 @@ html,body{
              style="max-width:100px; height:auto; display:inline-block;"/>
       </div>
       <h1>Welcome to Indian Coal Chronicles</h1>
-      <p><strong>choose the exam you want to practice.</strong></p>
+      <p><strong>Follow us on below for more content</strong></p>
+
+      
+      <!-- Social buttons (paste into your page) -->
+<style>
+  .social-btns { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .social-btn {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 12px;
+    border-radius:999px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:600;
+    font-size:14px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:transform .14s ease, box-shadow .14s ease, filter .14s ease;
+    border:0;
+    line-height:1;
+  }
+  .social-btn:focus { outline:3px solid rgba(0,0,0,0.08); outline-offset:3px; }
+  .social-btn:hover { transform:translateY(-3px) scale(1.01); box-shadow:0 18px 36px rgba(0,0,0,0.12); }
+
+  .social-icon {
+    width:18px;
+    height:18px;
+    display:inline-block;
+    flex:0 0 18px;
+  }
+
+  /* platform colours */
+  .fb { background:#1877F2; }
+  .insta { background:linear-gradient(45deg,#feda75,#f58529,#dd2a7b,#8134af,#515bd4); }
+  .li { background:#0A66C2; }
+  .tw { background:#1DA1F2; color:#002026; } /* darker label for contrast on light blue */
+  .yt { background:#FF0000; }
+
+  /* smaller label style if you want only icons */
+  .social-btn .label { display:inline-block; }
+  @media (max-width:480px){
+    .social-btn { padding:8px; gap:8px; font-size:13px; }
+    .social-btn .label { display:none; } /* show icons only on narrow screens */
+  }
+</style>
+<style>
+  .social-btns {
+    display: flex;
+    justify-content: center;   /* centers horizontally */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;                 /* spacing between buttons */
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* smaller label style if you want only icons */
+  .social-btn .label { display:inline-block; }
+
+  @media (max-width:480px){
+    .social-btn { padding:8px; gap:8px; font-size:13px; }
+    .social-btn .label { display:none; } /* icons only on small screen */
+  }
+</style>
+
+<div class="social-btns" aria-label="Social links">
+  <a class="social-btn fb" href="https://www.facebook.com/924506984084381" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">
+    <!-- Facebook SVG -->
+    <span class="social-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.95 0 1.95.17 1.95.17v2.15h-1.1c-1.09 0-1.43.68-1.43 1.36V12h2.44l-.39 2.9h-2.05v7A10 10 0 0022 12z"/>
+      </svg>
+    </span>
+    <span class="label">Facebook</span>
+  </a>
+
+  <a class="social-btn insta" href="https://www.instagram.com/indiancoalchronicles/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">
+    <!-- Instagram SVG -->
+    <span class="social-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="white">
+        <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 6.1A4.9 4.9 0 1016.9 13 4.9 4.9 0 0012 8.1zm6.3-.6a1.2 1.2 0 11-1.2-1.2 1.2 1.2 0 011.2 1.2z"/>
+      </svg>
+    </span>
+    <span class="label">Instagram</span>
+  </a>
+
+  <a class="social-btn li" href="https://www.linkedin.com/in/indian-coal-chronicles-mining-1007b338b/" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">
+    <!-- LinkedIn SVG -->
+    <span class="social-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.98 3.5a2.5 2.5 0 11-.001 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3zM9 9h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05C20.8 8.55 21 11.05 21 14.2V21H17v-6.1c0-1.46-.03-3.34-2.03-3.34-2.03 0-2.34 1.58-2.34 3.22V21H9z"/>
+      </svg>
+    </span>
+    <span class="label">LinkedIn</span>
+  </a>
+
+  <a class="social-btn tw" href="https://x.com/ICoalChronicles" target="_blank" rel="noopener noreferrer" aria-label="Visit our Twitter / X">
+    <!-- Twitter/X SVG -->
+    <span class="social-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 5.92c-.63.28-1.3.47-2 .56a3.44 3.44 0 001.5-1.9 6.85 6.85 0 01-2.18.84 3.42 3.42 0 00-5.84 3.12A9.7 9.7 0 013 4.9a3.42 3.42 0 001.06 4.56 3.35 3.35 0 01-1.55-.43v.04a3.42 3.42 0 002.74 3.35c-.48.13-.98.16-1.5.06a3.42 3.42 0 003.2 2.37 6.86 6.86 0 01-4.25 1.47c-.28 0-.56-.02-.83-.05A9.68 9.68 0 0011.2 21c6.39 0 9.89-5.29 9.89-9.88v-.45A7.1 7.1 0 0022 5.92z"/>
+      </svg>
+    </span>
+    <span class="label">Twitter / X</span>
+  </a>
+
+  <a class="social-btn yt" href="https://www.youtube.com/@IndianCoalChronicles" target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel">
+    <!-- YouTube SVG -->
+    <span class="social-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="white" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.5 6.2s-.23-1.62-.95-2.33C21.3 3 19.75 3 19.01 2.9 16.28 2.6 12 2.6 12 2.6h-.01s-4.28 0-7 0C3.99 2.6 2.44 3 1.45 3.85.73 4.56.5 6.2.5 6.2S.25 8.6.25 11v1c0 2.4.25 4.8.25 4.8s.23 1.62.95 2.33c.99.86 2.55 1.28 3.3 1.35 2.72.3 7 .3 7 .3s4.27 0 7 0c.76-.07 2.31-.49 3.3-1.35.72-.71.95-2.33.95-2.33s.25-2.4.25-4.8v-1c0-2.4-.25-4.8-.25-4.8zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
+      </svg>
+    </span>
+    <span class="label">YouTube</span>
+  </a>
+</div>
+<!-- Image Left - Text Right Intro Section -->
+<div style="
+  display:flex;
+  align-items:stretch;
+  gap:24px;
+  margin:20px 0;
+  padding:20px;
+  border-radius:12px;
+  background:rgba(0,0,0,0); /* transparent */
+  backdrop-filter:none; 
+  flex-wrap:wrap;
+">
+
+  <!-- Left: Image -->
+  <div style="flex:0 0 260px; max-width:260px; min-width:220px;">
+    <img 
+      src="https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/left.jpeg"
+      alt="Indian Coal Chronicles Logo"
+      style="
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        border-radius:12px;
+      "
+    />
+  </div>
+
+  <!-- Right: Text -->
+  <div style="flex:1; min-width:260px; font-family:'Georgia', serif; color:#222; line-height:1.55; display:flex; flex-direction:column; justify-content:center;">
+    
+    <p style="margin-bottom:14px; font-size:1rem;">
+      <strong>Indian Coal Chronicles</strong> — where India’s energy story meets your engineering ambitions.  
+      Just as coal powers the nation from deep underground, we power your journey toward cracking the  
+      <strong>GATE</strong> with clarity, strategy, and confidence.
+    </p>
+
+    <p style="margin-bottom:14px; font-size:1rem;">
+      We simplify complex mining and geology concepts through intuitive learning, real-world examples,  
+      smart test series, and focused mentorship — turning every challenge into a stepping stone  
+      toward success.
+    </p>
+
+    <p style="margin-bottom:0; font-size:1rem;">
+      Join us. Dive deep. Rise strong.  
+      Let’s craft your future rank and write the next chapter of India’s engineering excellence.  
+    </p>
+    <h1 style="margin-bottom:0; font-size:1rem;">
+       Practice the below exams for perfection.  
+      <span style="font-size:1.2rem;">⚒️</span>
+    </h1>
+
+  </div>
+
+</div>
+
+      
+      
 
       <!-- Exam mode selector -->
       <div class="exam-mode-switch" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px;">
-        <button id="modeGateBtn"   class="btn ghostt">Practice for GATE Mining 2026 Exam</button>
-        <button id="modeCilBtn"    class="btn ghos">Practice for CIL MT (Mining) Exam</button>
-        <button id="modeCustomBtn" class="btn">Custom Practice from Question Bank</button>
+        <button id="modeGateBtn"   class="btn1">Practice for GATE Mining 2026 Exam</button>
+        <button id="modeCilBtn"    class="btn2">Practice for CIL MT (Mining) Exam</button>
+        <button id="modeCustomBtn" class="btn3">Create Custom Exam</button>
+      </div>
+      
+      
+      <h1>Fresh updates in Mining Industry</h1>
+      
+      <!-- YOUTUBE VIDEO: appears only on welcome page -->
+      <div id="welcomeVideoContainer" style="margin-top:20px;width:100%;max-width:700px;display:flex;justify-content:center;">
+        <!-- iframe src is set/cleared by JS to control autoplay when showing/hiding -->
+        <div id="welcomeVideoInner" style="width:100%;max-width:700px;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+          <!-- iframe will be injected here by JS -->
+        </div>
       </div>
 
+        
       <!-- GATE instructions -->
       <div id="gateInstructions" class="hidden">
         <p><strong>GATE - Mining Practice Paper</strong>.</p>
@@ -523,7 +905,7 @@ html,body{
 
       <!-- Custom practice configuration -->
       <div id="customConfig" class="hidden">
-        <p><strong>Custom Practice from Question Bank</strong></p>
+        <p><strong>Custom Practice</strong></p>
         <div style="max-width:820px;margin:12px auto;padding:12px;border-radius:10px;background:rgba(0,0,0,0.15);color:var(--muted);">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;font-size:14px;">
             <div>
@@ -533,23 +915,24 @@ html,body{
                 <option value="2025">2025</option>
                 <option value="2024">2024</option>
                 <option value="2023">2023</option>
-<option value="2022">2022</option>
-              <option value="2021">2021</option>
-<option value="2020">2020</option>
-<option value="2019">2019</option>
-<option value="2018">2018</option>
-<option value="2017">2017</option>
-<option value="2016">2016</option>
+	              <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
                 <option value="2015">2015</option>
                 <option value="2014">2014</option>
-<option value="2013">2013</option>
-              <option value="2012">2012</option>
-<option value="2011">2011</option>
-<option value="2010">2010</option>
-<option value="2009">2009</option>
-<option value="2008">2008</option>
-<option value="2007">2007</option>
-</select>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+
+              </select>
             </div>
             <div>
               <label>Section</label>
@@ -620,7 +1003,7 @@ html,body{
       </div>
 
       <!-- Start button (hidden on very first opening) -->
-      <button id="startBtn" class="btn ghostt" style="margin-top:12px;display:none;">Start</button>
+      <button id="startBtn" class="btn4" style="margin-top:12px;display:none;">Start</button>
 
       <!-- Back to Home button on instruction/custom screen (hidden on very first opening) -->
       <div id="backInstructionsWrapper" style="margin-top:10px;display:none;">
@@ -1115,7 +1498,7 @@ const QUESTION_BANK = [
 {
   "qno": 85,
   "year": 2024,
-  "section": "MN",
+  "section": "MEM",
   "subsection": "Engineering Mathematics",
   "subsubsection": "Engineering Mathematics",
   "type": "mcq",
@@ -11396,6 +11779,10 @@ explanation: "Series path reliabilities: R₁ = 0.6×0.6 = 0.36; R₂ = 0.5×0.5
     explanation: " "
   }
 
+
+
+
+  
 ];
 
 /* Active exam questions */
@@ -11465,9 +11852,48 @@ const cilInstructionsEl   = document.getElementById('cilInstructions');
 const customConfigEl      = document.getElementById('customConfig');
 const prepareCustomBtn    = document.getElementById('prepareCustomBtn');
 
+/* video refs (welcome) */
+const welcomeVideoContainer = document.getElementById('welcomeVideoContainer');
+const welcomeVideoInner = document.getElementById('welcomeVideoInner');
+
 /* new back button in instructions/custom screen */
 const backInstructionsWrapper = document.getElementById('backInstructionsWrapper');
 const backFromInstructionsBtn = document.getElementById('backFromInstructionsBtn');
+
+/* --------------------------
+   YouTube show/hide helpers
+   - video ID: XopdRESIJc4
+   Behavior:
+   - Video appears only on welcome page (autoplays muted, loop)
+   - Video removed (src cleared) when any mode/start button pressed
+   - Video recreated when returning back to home
+--------------------------- */
+const YT_ID = 'XopdRESIJc4';
+function buildWelcomeIframeSrc(){
+  // autoplay=1, mute=1, loop=1, playlist=<ID> to make loop work
+  return `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&loop=1&playlist=${YT_ID}&rel=0&modestbranding=1`;
+}
+function showWelcomeVideo(){
+  if (!welcomeVideoInner) return;
+  // If already contains iframe, do nothing
+  if (welcomeVideoInner.querySelector('iframe')) return;
+  const iframe = document.createElement('iframe');
+  iframe.src = buildWelcomeIframeSrc();
+  iframe.frameBorder = "0";
+  iframe.allow = "autoplay; encrypted-media";
+  iframe.allowFullscreen = true;
+  iframe.style = "position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;";
+  welcomeVideoInner.appendChild(iframe);
+  // ensure container visible
+  if (welcomeVideoContainer) welcomeVideoContainer.style.display = 'flex';
+}
+function hideWelcomeVideo(){
+  if (!welcomeVideoInner) return;
+  // remove iframe to stop playback
+  welcomeVideoInner.querySelectorAll('iframe').forEach(f => f.remove());
+  // hide container visually
+  if (welcomeVideoContainer) welcomeVideoContainer.style.display = 'none';
+}
 
 /* --------------------------
    Mode switching
@@ -11485,6 +11911,17 @@ function setExamMode(mode){
   // show Start button and Back button only after a mode is chosen (not on very first opening)
   startBtn.style.display = 'inline-block';
   backInstructionsWrapper.style.display = 'block';
+
+  // hide the welcome video immediately when a mode is chosen
+  hideWelcomeVideo();
+
+  // ---> NEW: add compact "mode-active" class and mode-specific class
+  // so only social + related instruction + start/back remains visible
+  welcomeEl.classList.remove('mode-gate','mode-cil','mode-custom');
+  welcomeEl.classList.add('mode-active');
+  if (mode === 'GATE') welcomeEl.classList.add('mode-gate');
+  if (mode === 'CIL') welcomeEl.classList.add('mode-cil');
+  if (mode === 'CUSTOM') welcomeEl.classList.add('mode-custom');
 }
 
 /* attach mode events */
@@ -12332,6 +12769,9 @@ function backToStartPage(){
   startBtn.style.display = 'none';
   backInstructionsWrapper.style.display = 'none';
 
+  // Remove the compact mode classes so the full welcome layout is visible again
+  welcomeEl.classList.remove('mode-active','mode-gate','mode-cil','mode-custom');
+
   // Reset state
   QUESTIONS=[];
   state.started=false;
@@ -12353,6 +12793,9 @@ function backToStartPage(){
   countNotAnsweredEl.textContent='(0)';
   countReviewEl.textContent='(0)';
 
+  // show the welcome video again when returning to home
+  showWelcomeVideo();
+
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -12366,6 +12809,9 @@ backFromInstructionsBtn.addEventListener('click', backToStartPage);
    START BUTTON (mode aware)
 --------------------------- */
 startBtn.addEventListener('click',()=>{
+  // hide video immediately on start
+  hideWelcomeVideo();
+
   if (state.examMode==='GATE'){
     const result = buildRandomGateExam();
     if (!result || !result.ok){
@@ -12400,6 +12846,11 @@ window.addEventListener('keydown',e=>{
   if (state.submitted || !QUESTIONS.length) return;
   if (e.key==='ArrowLeft'){ saveAnswer(); gotoQuestion(state.currentIndex-1); }
   if (e.key==='ArrowRight'){ saveAnswer(); gotoQuestion(state.currentIndex+1); }
+});
+
+/* Ensure video visible on initial load */
+document.addEventListener('DOMContentLoaded', ()=>{
+  showWelcomeVideo();
 });
 </script>
 </body>
