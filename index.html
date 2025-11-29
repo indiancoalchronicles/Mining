@@ -77,14 +77,13 @@ html,body{
 /* ---------------- BACKGROUND SLIDESHOW ---------------- */
 .container-wrap{
   min-height:100vh;
-  background-image: url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/background.png');
-  background-size:cover;
-  background-position:center center;
+  background:#000; /* or any solid color */
   display:flex;
   align-items:center;
   justify-content:center;
   position:relative;
 }
+
 
 /* Slideshow images */
 .bg-slide{
@@ -93,29 +92,37 @@ html,body{
   background-size:cover;
   background-position:center;
   opacity:0;
-  animation: fadeSlide 10s infinite;
-  z-index:-2;
+  animation: fadeSlide 110s infinite;
+  z-index:0; /* CHANGED from -2 */
 }
 
-/* Fade animation */
+/* each slide is visible for a chunk of the 110s cycle */
 @keyframes fadeSlide {
-  0%   {opacity:1;}
-  10%  {opacity:1;}
-  20%  {opacity:0;}
-  100% {opacity:0;}
+  0%   { opacity:0; }
+  5%   { opacity:1; }
+  15%  { opacity:1; }
+  20%  { opacity:0; }
+  100% { opacity:0; }
 }
+
 
 /* Overlay between slideshow and card */
 .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.40));
-  z-index:0;
+  /* Dark, adaptive overlay so text/card stay readable on any background */
+  background:
+    radial-gradient(circle at top, rgba(0,0,0,0.35), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.85));
+  mix-blend-mode: multiply;     /* lets the overlay react to the image underneath */
+  backdrop-filter: blur(2px);   /* slight soften of background for extra clarity */
+  z-index:2;
 }
+
 
 .card{
   position:relative;
-  z-index:2;
+  z-index:3; /* CHANGED from 2 */
   background:var(--bg-panel);
   border-radius:14px;
   padding:18px;
@@ -715,6 +722,43 @@ html,body{
   .right{order:-1}
   #welcomeVideoContainer{ max-width:95%; }
 }
+.watermark-diagonal {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5; /* keep it between bg-slide and overlay/card */
+
+  --wm-text: "INDIAN COAL CHRONICLES";
+
+  /* remove stripe background for a cleaner look */
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.watermark-diagonal::before {
+  content: var(--wm-text);
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+
+  /* slightly darker so it shows under your light overlay */
+  color: rgba(0, 0, 0, 0.18);
+
+  transform: rotate(-35deg);
+  white-space: nowrap;
+  pointer-events: none;
+
+  /* soft glow so it’s readable on both light & dark areas */
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.4),
+    0 0 12px rgba(0,0,0,0.5);
+}
+
+
   </style>
 
   <!-- KaTeX -->
@@ -726,19 +770,19 @@ html,body{
 </head>
 <body>
 <div class="container-wrap">
-
+<div class="watermark-diagonal"></div>
   <!-- BACKGROUND SLIDESHOW IMAGES -->
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/background.png'); animation-delay:0s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg1.jpg'); animation-delay:4s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg2.jpg'); animation-delay:8s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg3.jpg'); animation-delay:12s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg4.jpg'); animation-delay:16s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg5.jpg'); animation-delay:20s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg6.jpg'); animation-delay:24s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg7.jpg'); animation-delay:28s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg8.jpg'); animation-delay:32s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg9.jpg'); animation-delay:36s;"></div>
-  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/refs/heads/main/bg10.jpg'); animation-delay:38s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/background.png'); animation-delay:0s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg1.jpeg'); animation-delay:10s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg2.jpeg'); animation-delay:20s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg3.jpeg'); animation-delay:30s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg4.jpeg'); animation-delay:40s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg5.jpeg'); animation-delay:50s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg6.jpeg'); animation-delay:60s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg7.jpeg'); animation-delay:70s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg8.jpeg'); animation-delay:80s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg9.jpeg'); animation-delay:90s;"></div>
+  <div class="bg-slide" style="background-image:url('https://raw.githubusercontent.com/indiancoalchronicles/mining1/main/bg10.jpeg'); animation-delay:100s;"></div>
 
   <div class="overlay" aria-hidden="true"></div>
 
@@ -2976,7 +3020,7 @@ $$ f(x)= \\begin{cases} -k, & \\text{ for } -\\pi < x < 0 \\\\ k, & \\text{ for 
     subsubsection: "Mineral Economics",
     type: "nat",
     marks: 1,
-    question: `The cost of a ***** compressor with life 15 years is ₹2,100,000. If depreciation charged using sum-of-the-years-digits method at the end of 4th year is ₹200,000, the salvage value (₹) is (round off to 1 decimal place)`,
+    question: `The cost of a screw compressor with life 15 years is ₹2,100,000. If depreciation charged using sum-of-the-years-digits method at the end of 4th year is ₹200,000, the salvage value (₹) is (round off to 1 decimal place)`,
     answerMin: 100000.0,
     answerMax: 100000.0,
     explanation: ""
@@ -5346,7 +5390,7 @@ $$ f(x)= \\begin{cases} -k, & \\text{ for } -\\pi < x < 0 \\\\ k, & \\text{ for 
     "question": "The availability of water in the root zone for plant use is maximum in the case of",
     "options": [ "sand","loam",  "clay",  "gravel"  ],
     "answer": 1,
-    "explanation": "Loam soils provide a favorable balance between water retention and drainage: they hold sufficient plant-available water while allowing root ***** and oxygenation. Sand and gravel drain too quickly; clay retains water but much of it may be unavailable to plants."
+    "explanation": "Loam soils provide a favorable balance between water retention and drainage: they hold sufficient plant-available water while allowing root penetration and oxygenation. Sand and gravel drain too quickly; clay retains water but much of it may be unavailable to plants."
   },
   {
     "qno": 349,
@@ -6129,7 +6173,7 @@ $$ f(x)= \\begin{cases} -k, & \\text{ for } -\\pi < x < 0 \\\\ k, & \\text{ for 
     answerMin: 56.3,
     answerMax: 56.3,
     explanation:
-      '***** per rev = 0.15 m/min ÷ 180 rev/min = 0.0008333 m. Work = F × p = 6750 N × 0.0008333 m ≈ 56.3 N·m.'
+      'Penetration per rev = 0.15 m/min ÷ 180 rev/min = 0.0008333 m. Work = F × p = 6750 N × 0.0008333 m ≈ 56.3 N·m.'
   },
   {
     qno: 459,
@@ -11902,7 +11946,6 @@ explanation: "Series path reliabilities: R₁ = 0.6×0.6 = 0.36; R₂ = 0.5×0.5
     answer: 0,
     explanation: " "
   }
-
  
 ];
 
